@@ -15,21 +15,9 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.http import HttpResponse
-from django.urls import path
-
-
-def home(request):
-    return HttpResponse("anasayfa")
-
-
-def kurslar(request):
-    return HttpResponse("kurs listesi")
-
+from django.urls import include, path
 
 urlpatterns = [
-    path("", home),
-    path("anasayfa", home),
-    path("kurslar", kurslar),
+    path("", include("courses.urls")),
     path("admin/", admin.site.urls),
 ]
